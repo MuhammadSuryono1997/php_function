@@ -3,17 +3,12 @@
 $data = file_get_contents("data_order.json");
 $data = json_decode($data);
 
-function GetDataBulan($data, $month)
+function GetDataBulan($data)
 {
-	for ($i=0; $i < count($data) ; $i++) { 
-
-		if (date("F", strtotime($data[$i]->created_at)) == $month) 
-		{
-			$result[] = $data[$i];
-		}
+	if (date("F", strtotime($data->created_at)) == 'February') 
+	{
+		return true;
 	}
-
-	return $result;
 }
 
 
@@ -58,7 +53,7 @@ function GetDataByGrandLow($data)
 	return $result;
 }
 
-var_dump(GetDataBulan($data, "February"));
+var_dump(array_filter($data, "GetDataBulan"));
 var_dump(GetDataByName($data, "Ari"));
 print_r(array_unique(GetDataByGrandLow($data)));
 
