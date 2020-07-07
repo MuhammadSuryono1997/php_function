@@ -21,7 +21,7 @@ function GetDataByName($data, $name)
 			$items = $data[$i]->items;
 			foreach ($items as $item) 
 			{
-				$sum += $item->price;
+				$sum += $item->price * $item->qty;
 			}
 
 			// $result[] = (object)[
@@ -41,7 +41,7 @@ function GetDataByGrandLow($data)
 		$sum = 0;
 		foreach ($items as $item) 
 		{
-			$sum += $item->price;
+			$sum += $item->price * $item->qty;
 		}
 
 		if ($sum < 300000) 
