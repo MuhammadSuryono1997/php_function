@@ -18,18 +18,30 @@ function GetDataBulan($data, $month)
 
 // var_dump(GetDataBulan($data, "February"))
 
-function GetDataBulan($data, $month)
+function GetDataByName($data, $name)
 {
 	for ($i=0; $i < count($data) ; $i++) { 
-
-		if (date("F", strtotime($data[$i]->created_at)) == $month) 
+		if (strtolower($data[$i]->customer->name) == strtolower($name))
 		{
-			$result[] = $data[$i];
+			$items = $data[$i]->items;
+			$sum = 0;
+			foreach ($items as $item) 
+			{
+				$sum += $item->price;
+			}
+
+			$result[] = (object)[
+				$data[$i],
+				'grand_total'=>$sum
+
+			];
 		}
 	}
 
 	return $result;
 }
+
+var_dump(GetDataByName($data, "Ari"))
 
 
 
