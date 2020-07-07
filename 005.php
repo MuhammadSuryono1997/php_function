@@ -5,7 +5,8 @@
       $data = array_combine(array_map('strtolower',$csv[0]), $data);
     });
     array_shift($csv);
-    uasort($csv, function($a, $b){
+    uasort($csv, function($a, $b)
+    {
     	return $a['price'] - $b['price'];
     });
 

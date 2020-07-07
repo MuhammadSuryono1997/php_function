@@ -11,7 +11,6 @@ function GetDataBulan($data)
 	}
 }
 
-
 function GetDataByName($data, $name)
 {
 	$sum = 0;
@@ -23,12 +22,6 @@ function GetDataByName($data, $name)
 			{
 				$sum += $item->price * $item->qty;
 			}
-
-			// $result[] = (object)[
-			// 	$data[$i],
-			// 	'grand_total'=>$sum
-
-			// ];
 		}
 	}
 	return $sum;
